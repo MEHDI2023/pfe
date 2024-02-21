@@ -122,9 +122,9 @@ class SignInScreen extends StatelessWidget {
                                 height: 65,
                               ),
                             
-                               CustomTextFormField(labelText: 'E-mail',controller: _emailController),
+                               CustomTextFormField(labelText: 'E-mail',controller: _emailController,),
                               const SizedBox(height: 20),
-                               CustomTextFormField(labelText: 'Password',controller: _passwordController),
+                               CustomTextFormField(labelText: 'Password',controller: _passwordController,),
                               const SizedBox(height: 20),
                              
                               const SizedBox(height: 40),

@@ -4,35 +4,34 @@ class CustomTextFormField extends StatelessWidget {
   final String labelText;
   final TextEditingController controller;
   final Function? validator;
-  final TextInputType? type;
-
+  final double? width;
+  final double? height;
+  final double?broderReduis;
   const CustomTextFormField({
-
+    
     super.key, required this.labelText,
     required this.controller,
      this.validator,
-    this.type
+     this.width,
+      this.height,
+      this.broderReduis
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-     height: 50, 
-      width: 250,
+     height: height?? 50, 
+      width: width?? 250,
       child: Center(
         child: TextFormField(
-
-
-
           validator:validator as String? Function(String?)?,
           controller: controller,
           style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
             labelStyle: const TextStyle(color: Colors.white),
             labelText: labelText,
-
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
+              borderRadius: BorderRadius.circular(broderReduis??15.0),
               borderSide:const  BorderSide(
                   color: Colors.white,
                   width:
@@ -47,7 +46,7 @@ class CustomTextFormField extends StatelessWidget {
             ),
             // If you want to apply the same style for other states like errorBorder, focusedErrorBorder, etc., you can do so here.
           ),
-          keyboardType: type,
+          keyboardType: TextInputType.emailAddress,
         ),
       ),
     );

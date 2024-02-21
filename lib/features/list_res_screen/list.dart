@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../mode_commande.dart';
+import '../mode/mode_commande.dart';
 
 class Tasks extends StatelessWidget {
   @override

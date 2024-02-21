@@ -131,7 +131,7 @@ class SignUpScreen extends StatelessWidget {
                                 ),
                                 CustomTextFormField(
                                     labelText: 'Name',
-                                    type: TextInputType.name,
+                                    
                                     controller: _nameController,
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
@@ -141,7 +141,7 @@ class SignUpScreen extends StatelessWidget {
                                 const SizedBox(height: 20),
                                 CustomTextFormField(
                                   labelText: 'E-mail',
-                                  type: TextInputType.emailAddress,
+                                 
                                   controller: _emailController,
                                   //validation pour email
                                   validator: (value) {
@@ -156,7 +156,7 @@ class SignUpScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 20),
                                 CustomTextFormField(
-                                  type: TextInputType.name,
+                                  
                                     labelText: 'First Name',
                                     controller: _firstNameController,
                                     validator: (value) {
@@ -166,7 +166,7 @@ class SignUpScreen extends StatelessWidget {
                                     }),
                                 const SizedBox(height: 20),
                                 CustomTextFormField(
-                                 type:TextInputType.phone,
+                                
                                     labelText: 'Number Phone',
                                     controller: _nmuberPhoneController,
                                     validator: (value) {
@@ -177,7 +177,7 @@ class SignUpScreen extends StatelessWidget {
                                 const SizedBox(height: 20),
                                 CustomTextFormField(
                                   labelText: 'Password',
-                                  type: TextInputType.text,
+                                 
                                   controller: _passwordController,
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -191,6 +191,7 @@ class SignUpScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 20),
                                 CustomTextFormField(
+                                 
                                   labelText: 'Confirm Password',
                                   controller: _passwordController,
                                 ),
@@ -208,8 +209,7 @@ class SignUpScreen extends StatelessWidget {
                                           email: _emailController.text,
                                           password: _passwordController.text,
                                           name: _nameController.text,
-                                          firstName: _firstNameController.text,
-                                          Phone: _nmuberPhoneController.text,
+
                                         );
                                         print("User signed up successfully");
                                         // Navigate to success page or show success popup

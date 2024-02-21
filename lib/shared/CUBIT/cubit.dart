@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newburger/features/sign_up/ui/sign_up_screen.dart';
 import 'package:newburger/shared/CUBIT/state.dart';
-import 'package:newburger/test.dart';
 
 import '../../features/historique/houst.dart';
 import '../../features/list_res_screen/list.dart';
