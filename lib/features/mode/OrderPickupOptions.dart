@@ -3,12 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../shared/CUBIT/order_cubit.dart';
 
-class OrderPickupOptions extends StatelessWidget {
+class OrderPickupOptions extends StatefulWidget {
   late final String selectedOption;
   final Function(String) onChanged;
 
   OrderPickupOptions(this.selectedOption, this.onChanged);
 
+  @override
+  State<OrderPickupOptions> createState() => _OrderPickupOptionsState();
+}
+
+class _OrderPickupOptionsState extends State<OrderPickupOptions> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,49 +24,49 @@ class OrderPickupOptions extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         RadioListTile(
-
           value: 'sur place',
-          groupValue: selectedOption,
+          groupValue: widget.selectedOption,
           onChanged: (value) {
             if (value == 'sur place') {
               _showDeliveryTimePickerDialog(context);
+            
             }
-
-
-
-
+             setState(() {
+            widget.selectedOption = value!;
+    });
           },
           title: Text('sur place', style: TextStyle(color: Colors.white)),
         ),
         RadioListTile(
           value: 'empoter',
-          groupValue: selectedOption,
+          groupValue: widget.selectedOption,
           onChanged: (value) {
             if (value == 'empoter') {
               _showDeliveryTimePickerDialog(context);
-
             }
-
-
+            setState(() {
+            widget.selectedOption = value!;
+    });
           },
           title: Text('empoter', style: TextStyle(color: Colors.white)),
         ),
         RadioListTile(
           value: 'livrison',
-          groupValue: selectedOption,
+          groupValue: widget.selectedOption,
           onChanged: (value) {
             if (value == 'livrison') {
               _showDeliveryTimePickerDialog(context);
-
             }
-
-
+            setState(() {
+            widget.selectedOption = value!;
+    });
           },
           title: Text('livrison', style: TextStyle(color: Colors.white)),
         ),
       ],
     );
   }
+
   void _showDeliveryTimePickerDialog(BuildContext context) async {
     List<String> deliveryTimes = [
       '10:00 AM',
@@ -99,4 +104,3 @@ class OrderPickupOptions extends StatelessWidget {
     }
   }
 }
-

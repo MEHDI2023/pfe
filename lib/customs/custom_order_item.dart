@@ -4,7 +4,6 @@ import 'package:glassmorphism/glassmorphism.dart';
 
 import 'package:iconly/iconly.dart';
 import 'package:newburger/features/cart_screen/ui/cart_screen.dart';
-import 'package:newburger/helpers/shared.dart';
 import 'package:newburger/models/Compte/order_item/OrderItemModel.dart';
 
 class CustomOrderItem extends StatelessWidget {

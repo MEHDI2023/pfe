@@ -36,6 +36,7 @@ class CartScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 20),
+
                 CustomCartItem(
                     image: 'assets/images/img_klipartz_1.png',
                     title: 'Pizza Mixed',

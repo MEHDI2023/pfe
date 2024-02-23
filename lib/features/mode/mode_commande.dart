@@ -96,8 +96,10 @@ class _RestaurantOrderScreenState extends State<RestaurantOrderScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         OrderPickupOptions(selectedOption, (value) {
+
                           setState(() {
                             selectedOption = value;
+                            
                           });
                         }),
                       ],

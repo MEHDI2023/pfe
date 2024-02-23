@@ -69,6 +69,10 @@ class CustomCartItem extends StatelessWidget {
             style: TextStyle(
                 color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
           ),
+                     Spacer(),
+                     
+
+           
         ],
       ),
     );

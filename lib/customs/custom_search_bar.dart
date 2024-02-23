@@ -26,6 +26,7 @@ class CustomSearchBar extends StatelessWidget {
             ),
             hintTextDirection: TextDirection.ltr,
             hintText: "Search for food",
+            
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20.0),
               borderSide: const BorderSide(
