@@ -33,7 +33,7 @@ class Pub_Screen extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: CustomButton(text: "Commander",onPressed: (){
+                child: CustomButton(text: "To order",onPressed: (){
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => HomeLayout()),

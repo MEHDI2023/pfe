@@ -22,6 +22,7 @@ class CommandeEncour extends StatelessWidget {
 
     return Scaffold(
       body: Container(
+
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment(1.27, 1.54),
@@ -32,6 +33,7 @@ class CommandeEncour extends StatelessWidget {
             ],
           ),
         ),
+
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: ListView.builder(
@@ -40,6 +42,7 @@ class CommandeEncour extends StatelessWidget {
               final order = orders[index];
               return Column(
                 children: [
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -51,6 +54,7 @@ class CommandeEncour extends StatelessWidget {
                           Text('Montant: ${order['amount']}', style: textStyle),
                         ],
                       ),
+
                     ],
                   ),
                   const SizedBox(height: 20),

@@ -24,15 +24,7 @@ class CartencourScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  'Commande en cours',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 20),
+
                 // Use Card widgets to display items
                 CustomHistoItem(  discrptif: "commande 001",
                     name: "Paiement: En attente",

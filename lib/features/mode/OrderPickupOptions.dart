@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../shared/CUBIT/order_cubit.dart';
 
 class OrderPickupOptions extends StatefulWidget {
-  final String selectedOption; // Removed 'late' keyword
+  final String selectedOption;
   final Function(String) onChanged;
 
   OrderPickupOptions(this.selectedOption, this.onChanged);
@@ -14,12 +14,12 @@ class OrderPickupOptions extends StatefulWidget {
 }
 
 class _OrderPickupOptionsState extends State<OrderPickupOptions> {
-  String? _selectedOption; // Private variable to manage state
+  String? _selectedOption;
 
   @override
   void initState() {
     super.initState();
-    _selectedOption = widget.selectedOption; // Initialize with widget's value
+    _selectedOption = widget.selectedOption;
   }
 
   @override
@@ -32,22 +32,22 @@ class _OrderPickupOptionsState extends State<OrderPickupOptions> {
           style: TextStyle(color: Colors.white),
         ),
         RadioListTile<String>(
-          value: 'sur place',
+          value: 'On-site',
           groupValue: _selectedOption,
           onChanged: (value) => _handleRadioValueChange(value),
-          title: Text('sur place', style: TextStyle(color: Colors.white)),
+          title: Text('On-site', style: TextStyle(color: Colors.white)),
         ),
         RadioListTile<String>(
-          value: 'empoter',
+          value: 'Takeaway',
           groupValue: _selectedOption,
           onChanged: (value) => _handleRadioValueChange(value),
-          title: Text('empoter', style: TextStyle(color: Colors.white)),
+          title: Text('Takeaway', style: TextStyle(color: Colors.white)),
         ),
         RadioListTile<String>(
-          value: 'livrison',
+          value: 'Delivery',
           groupValue: _selectedOption,
           onChanged: (value) => _handleRadioValueChange(value),
-          title: Text('livrison', style: TextStyle(color: Colors.white)),
+          title: Text('Delivery', style: TextStyle(color: Colors.white)),
         ),
       ],
     );
@@ -59,7 +59,7 @@ class _OrderPickupOptionsState extends State<OrderPickupOptions> {
         _selectedOption = value;
       });
       widget.onChanged(value);
-      if (value == 'sur place' || value == 'empoter' || value == 'livrison') {
+      if (value == 'On-site' || value == 'Takeaway' || value == 'Delivery') {
         _showDeliveryTimePickerDialog(context);
       }
     }
@@ -76,7 +76,7 @@ class _OrderPickupOptionsState extends State<OrderPickupOptions> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Sélectionnez l\'heure de livraison'),
+          title: Text('Select the delivery time'),
           content: Container(
             width: double.maxFinite,
             height: 190.0,
@@ -90,6 +90,7 @@ class _OrderPickupOptionsState extends State<OrderPickupOptions> {
                   },
                 );
               },
+
             ),
           ),
         );

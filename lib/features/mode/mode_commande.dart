@@ -52,7 +52,7 @@ class _RestaurantOrderScreenState extends State<RestaurantOrderScreen> {
                   BlocBuilder<OrderCubit, String>(
                     builder: (context, selectedDeliveryTime) {
                       return Text(
-                        selectedDeliveryTime.isNotEmpty ? 'Heure de  : $selectedDeliveryTime' : 'HH:MM',
+                        selectedDeliveryTime.isNotEmpty ? 'Time   : $selectedDeliveryTime' : 'HH:MM',
                         style: TextStyle(color: Colors.white),
                       );
                     },
@@ -109,14 +109,37 @@ class _RestaurantOrderScreenState extends State<RestaurantOrderScreen> {
                   Container(
                     width: double.infinity,
                     child: CustomButton(
-                      text: "Commander",
+                      text: "To order",
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
-                          ),
-                        );
+                        // Check if any option is selected
+                        if (selectedOption.isEmpty) {
+                          // Show a dialog if no option is selected
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text("Select an option"),
+                                content: Text("Please choose one of the options before proceeding."),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text("OK"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        } else {
+                          // Navigate to the next screen
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => HomeScreen(),
+                            ),
+                          );
+                        }
                       },
                     ),
                   ),

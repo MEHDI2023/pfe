@@ -56,7 +56,7 @@ class Historique extends StatelessWidget {
                                 cubit.ChangeIndex(0);
                               },
                               child: Text(
-                                "En cours",
+                                "Ongoing",
                                 style: TextStyle(color: textColor(0)),
                               ),
                             ),
@@ -70,7 +70,7 @@ class Historique extends StatelessWidget {
                                 cubit.ChangeIndex(1);
                               },
                               child: Text(
-                                "Passées",
+                                "Past",
                                 style: TextStyle(color: textColor(1)),
                               ),
                             ),

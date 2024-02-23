@@ -23,27 +23,21 @@ class ProfileScreen extends StatelessWidget {
               SizedBox(height: 20), // Espacement
               CircleAvatar(
                 radius: 50, // Taille de l'image de profil
-                backgroundImage: AssetImage('path/to/profile_image.png'), // Remplacer avec votre image
+                backgroundImage: AssetImage('assets/images/img_3d_food_icon_by_108x108.png'), // Remplacer avec votre image
               ),
               SizedBox(height: 10), // Espacement
               Text(
-                'Shambhavi Mishra',
+                'ELGAIED MEHDI',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
               ),
-              Text(
-                'Food Blogger',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.black54,
-                ),
-              ),
+
               Expanded(
                 child: ListView(
-                  children: ListTile.divideTiles( // Ajoute des lignes de séparation
+                  children: ListTile.divideTiles(
                     context: context,
                     tiles: [
                       ListTile(
