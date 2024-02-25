@@ -26,7 +26,7 @@ class CustomListItem extends StatelessWidget {
           crossAxisSpacing: 15,
         ),
         physics:
-            const NeverScrollableScrollPhysics(), // Added 'const' for better performance
+            const NeverScrollableScrollPhysics(),
         itemCount: 5,
         itemBuilder: (context, index) {
           // You need to return the GestureDetector
@@ -35,10 +35,12 @@ class CustomListItem extends StatelessWidget {
             orderItem: OrderItemModel
             (
               ingredients:[
-                IngredientModel(ingredient: "sause", id:"hh", price: "3"),
-                IngredientModel(ingredient: "sause", id:"hh", price: "3"),
-                IngredientModel(ingredient: "sause", id:"hh", price: "3"),
-                IngredientModel(ingredient: "sause", id:"hh", price: "3")
+                IngredientModel(ingredient: "tomate", id:"0", price: "3"),
+                IngredientModel(ingredient: "olive", id:"1", price: "3"),
+                IngredientModel(ingredient: "ton", id:"2", price: "3"),
+                IngredientModel(ingredient: "hirssa", id:"3", price: "3"),
+                IngredientModel(ingredient: "mayo", id:"4", price: "3"),
+
 
               ] ,
               category:"tacos",
@@ -46,7 +48,7 @@ class CustomListItem extends StatelessWidget {
               id: "hhh",
               images: ["assets/images/img_kisspng_pizza_m.png"],
               name: "tacos",
-              price: "10",
+              price: "10.00",
 
             ),
             blur: 5, // Set a reasonable blur value

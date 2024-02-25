@@ -4,7 +4,7 @@ import 'package:glass_kit/glass_kit.dart';
 import '../../../customs/custom_cart_item.dart';
 
 class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+  const CartScreen({super.key, required List<String> selectedIngredients});
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +43,7 @@ class CartScreen extends StatelessWidget {
                 Expanded(
                   child: ListView(
                     children: const [
+
                       CustomCartItem(
                         image: 'assets/images/img_klipartz_1.png',
                         title: 'Pizza Mixed',
@@ -69,7 +70,7 @@ class CartScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   child: Center(
                     child: Text(
-                      'Total : 50.00',
+                      'Total : 50.00 €',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
@@ -80,6 +81,7 @@ class CartScreen extends StatelessWidget {
                 ),
               ],
             ),
+
           ),
         ),
       ),
@@ -105,11 +107,16 @@ class TotalWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(30),
       ),
       child: Center(
-        child: Text(
-          'Total : $total',
-          style: TextStyle(
-              color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
-        ),
+        child: TextButton(
+          child: Text(
+            'Total : total €',
+            style: TextStyle(
+                color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
+          ),
+          onPressed: (){
+
+          },
+        )
       ),
     );
   }

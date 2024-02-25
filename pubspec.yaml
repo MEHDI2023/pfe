@@ -50,6 +50,8 @@ dependencies:
   glass_kit:
   glass:
   equatable: ^2.0.5
+  flutter_stripe: ^10.0.0
+  flutter_stripe_payment: ^0.0.18
 
 dev_dependencies:
   flutter_test:

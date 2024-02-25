@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:glass_kit/glass_kit.dart';
 import 'package:glassmorphism/glassmorphism.dart';
 
 import 'package:iconly/iconly.dart';
 import 'package:newburger/features/cart_screen/ui/cart_screen.dart';
 import 'package:newburger/models/Compte/order_item/OrderItemModel.dart';
+import 'package:newburger/shared/CUBIT/quantity_cubit.dart';
+import 'package:newburger/shared/CUBIT/qunatity_state.dart';
+
+import '../shared/CUBIT/checkbox_cubit.dart';
+import '../shared/CUBIT/checkbox_state.dart';
 
 class CustomOrderItem extends StatelessWidget {
   final double blur;
   final List<Color> colors;
   final int index;
   final OrderItemModel orderItem;
+
   const CustomOrderItem({
     super.key,
     required this.blur,
@@ -65,7 +72,7 @@ class CustomOrderItem extends StatelessWidget {
                             color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        "${orderItem.price} £",
+                        "${orderItem.price} €",
                         style: TextStyle(color: Colors.white),
                       ),
                     ],
@@ -78,7 +85,8 @@ class CustomOrderItem extends StatelessWidget {
             top: 9,
             left: 80,
             child: Image.asset(
-              'assets/images/img_kisspng_pizza_m.png', // Replace with your image URL
+              'assets/images/img_kisspng_pizza_m.png',
+              // Replace with your image URL
               fit: BoxFit.cover,
               height: 100,
               width: 100, // Set this to the desired height
@@ -95,7 +103,10 @@ class CustomOrderItem extends StatelessWidget {
       builder: (BuildContext bc) {
         return GlassContainer(
           width: double.infinity,
-          height: MediaQuery.of(context).size.height * 0.72,
+          height: MediaQuery
+              .of(context)
+              .size
+              .height * 0.72,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20),
             topRight: Radius.circular(20),
@@ -146,18 +157,21 @@ class CustomOrderItem extends StatelessWidget {
                         width: double.infinity,
                         height: 150,
                         borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
+                        const BorderRadius.all(Radius.circular(20)),
                         blur:
-                            15, // Augmentez cette valeur pour un effet de flou plus prononcé
+                        15,
+                        // Augmentez cette valeur pour un effet de flou plus prononcé
                         alignment: Alignment.bottomCenter,
                         gradient: const LinearGradient(
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
                           colors: [
                             Color.fromRGBO(255, 255, 255,
-                                0.2), // Modifiez l'opacité pour un effet de verre différent
+                                0.2),
+                            // Modifiez l'opacité pour un effet de verre différent
                             Color.fromRGBO(255, 255, 255,
-                                0.05), // Modifiez l'opacité pour un effet de verre différent
+                                0.05),
+                            // Modifiez l'opacité pour un effet de verre différent
                           ],
                           stops: [0.1, 1],
                         ),
@@ -209,56 +223,79 @@ class CustomOrderItem extends StatelessWidget {
                                 color: Colors.black.withOpacity(0.2),
                                 borderRadius: BorderRadius.circular(30),
                               ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      padding: const EdgeInsets.only(
-                                          left: 5, right: 4, top: 4, bottom: 4),
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color:
-                                            Color.fromARGB(255, 231, 230, 230),
+                              child: BlocConsumer<quntityCubit, quantityStates>(
+                                listener: (context, state) {},
+                                builder: (BuildContext context,
+                                    quantityStates state) {
+                                  var cubit = quntityCubit.get(context);
+                                  final quantityText = '${cubit.quantity}';
+
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          cubit.minus();
+                                        },
+                                        child: Container(
+                                          padding: const EdgeInsets.only(
+                                              left: 5,
+                                              right: 4,
+                                              top: 4,
+                                              bottom: 4),
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Color.fromARGB(
+                                                255, 231, 230, 230),
+                                          ),
+                                          child: const Icon(Icons.remove,
+                                              color: Colors.green,
+                                              size: 16,
+                                              weight: 10),
+                                        ),
                                       ),
-                                      child: const Icon(Icons.remove,
-                                          color: Colors.green,
-                                          size: 16,
-                                          weight: 10),
-                                    ),
-                                  ),
-                                  const Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 12.0),
-                                    child: Text(
-                                      '1',
-                                      style: TextStyle(
-                                          color: Colors.white, fontSize: 20),
-                                    ),
-                                  ),
-                                  InkWell(
-                                    onTap: () {},
-                                    child: Container(
-                                      padding: const EdgeInsets.only(
-                                          left: 4, right: 5, top: 4, bottom: 4),
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.green,
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 12.0),
+                                        child: Text(
+                                          quantityText,
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 20,
+                                          ),
+                                        ),
                                       ),
-                                      child: const Icon(
-                                        Icons.add,
-                                        color: Colors.white,
-                                        size: 16,
-                                        weight: 10,
+                                      InkWell(
+                                        onTap: () {
+                                          cubit.plus();
+                                        },
+                                        child: Container(
+                                          padding: const EdgeInsets.only(
+                                              left: 4,
+                                              right: 5,
+                                              top: 4,
+                                              bottom: 4),
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.green,
+                                          ),
+                                          child: const Icon(
+                                            Icons.add,
+                                            color: Colors.white,
+                                            size: 16,
+                                            weight: 10,
+                                          ),
+                                        ),
                                       ),
-                                    ),
-                                  ),
-                                ],
+                                    ],
+                                  );
+                                },
+
                               ),
                             ),
                             Text(
-                              '${orderItem.price} €', // Assurez-vous que `orderItem.price` est défini
+                              '${orderItem.price } €',
+                              // Assurez-vous que `orderItem.price` est défini
                               style: const TextStyle(
                                   color: Colors.white,
                                   fontFamily: 'popines',
@@ -270,7 +307,7 @@ class CustomOrderItem extends StatelessWidget {
                       ),
                       const Padding(
                         padding:
-                            EdgeInsets.symmetric(horizontal: 12, vertical: 25),
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 25),
                         child: Divider(
                           color: Colors.white,
                           thickness: 1,
@@ -286,11 +323,14 @@ class CustomOrderItem extends StatelessWidget {
                       ListView.separated(
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => checkBoxListTitle(
-                          title: orderItem.ingredients[index].ingredient,
-                          price: orderItem.ingredients[index].price,
-                        ),
-                        separatorBuilder: (context, index) => const Padding(
+                        itemBuilder: (context, index) =>
+                            checkBoxListTitle(
+                              id: orderItem.ingredients[index].id,
+                              title: orderItem.ingredients[index].ingredient,
+                              price: orderItem.ingredients[index].price,
+                            ),
+                        separatorBuilder: (context, index) =>
+                        const Padding(
                           padding: EdgeInsets.symmetric(
                             horizontal: 50,
                           ),
@@ -301,61 +341,12 @@ class CustomOrderItem extends StatelessWidget {
                         ),
                         itemCount: orderItem.ingredients.length,
                       ),
-                      const Text(
-                        'Extras',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Colors.white),
-                      ),
-                      ListView.separated(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => checkBoxListTitle(
-                          title: orderItem.ingredients[index].ingredient,
-                          price: orderItem.ingredients[index].price,
-                        ),
-                        separatorBuilder: (context, index) => const Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 50,
-                          ),
-                          child: Divider(
-                            color: Colors.white,
-                            thickness: 1,
-                          ),
-                        ),
-                        itemCount: orderItem.ingredients.length,
-                      ),
-                      const Text(
-                        'Extras',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Colors.white),
-                      ),
-                      ListView.separated(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => checkBoxListTitle(
-                          title: orderItem.ingredients[index].ingredient,
-                          price: orderItem.ingredients[index].price,
-                        ),
-                        separatorBuilder: (context, index) => const Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 50,
-                          ),
-                          child: Divider(
-                            color: Colors.white,
-                            thickness: 1,
-                          ),
-                        ),
-                        itemCount: orderItem.ingredients.length,
-                      ),
-                      const SizedBox(height: 20),
+
                       GlassmorphicContainer(
                         width: double.infinity,
                         height:
-                            56, // Define a fixed height for the button container
+                        56,
+                        // Define a fixed height for the button container
                         borderRadius: 20,
                         blur: 10,
                         alignment: Alignment.bottomCenter,
@@ -383,11 +374,15 @@ class CustomOrderItem extends StatelessWidget {
 
                         child: TextButton(
                           onPressed: () {
-                            Navigator.push(
+                            List<String> selectedIngredients =
+                                context.read<CheckboxCubit>().state;
+
+                                Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => CartScreen(),
-                                ));
+                                builder: (context) => CartScreen(selectedIngredients: selectedIngredients),
+                            ),
+                            );
                           },
                           child: const Text(
                             "Add to cart",
@@ -413,22 +408,29 @@ class CustomOrderItem extends StatelessWidget {
     );
   }
 
-  CheckboxListTile checkBoxListTitle(
-      {required String title, required String price}) {
-    return CheckboxListTile(
-      checkColor: Colors.white,
-      title: Text(
-        title,
-        style: const TextStyle(color: Colors.white),
-      ),
-      value: true,
-      onChanged: (bool? value) {
-        value = !value!;
+  BlocBuilder<CheckboxCubit, List<String>> checkBoxListTitle({
+    required String title,
+    required String price,
+    required String id,
+  }) {
+    return BlocBuilder<CheckboxCubit, List<String>>(
+      builder: (context, selectedIds) {
+        return CheckboxListTile(
+          checkColor: Colors.white,
+          title: Text(
+            title,
+            style: const TextStyle(color: Colors.white),
+          ),
+          value: selectedIds.contains(id),
+          onChanged: (bool? value) {
+            context.read<CheckboxCubit>().toggleCheckbox(id);
+          },
+          secondary: Text(
+            price,
+            style: const TextStyle(color: Colors.white),
+          ),
+        );
       },
-      secondary: Text(
-        price,
-        style: const TextStyle(color: Colors.white),
-      ),
     );
   }
 }
